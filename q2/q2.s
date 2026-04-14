@@ -81,12 +81,9 @@ pop_done:
     slli t1, t1, 3
     add t1, s7, t1
     ld t2, 0(t1) #t2=stack[top] (this is an index)
-    slli t1, t2, 3 #convert index to offset
-    add t1, s3, t1 #get address of arr[stack[top]]
-    ld t2, 0(t1) #t2=arr[stack[top]] (get the actual VALUE)
     slli t3, t0, 3
     add t3, s4, t3 #t3=&result[i]
-    sd t2, 0(t3) #result[i]=arr[stack[top]] (store the VALUE, not the index)
+    sd t2, 0(t3) #result[i]=stack[top] (store the index, not the value)
 push:
     slli t1, s5, 3
     add t1, s7, t1 #t1=&stack[s5], where s5 is count
